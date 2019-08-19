@@ -32,7 +32,7 @@ namespace Jotunn
 	};
 
 /**
- * Macro to define an event's type
+ * Macro to define an event's type and name
  */
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
