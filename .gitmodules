@@ -13,3 +13,6 @@
 [submodule "Jotunn/vendor/IMGUI"]
 	path = Jotunn/vendor/IMGUI
 	url = https://github.com/ocornut/imgui.git
+[submodule "Jotunn/vendor/SPDLOG"]
+	path = Jotunn/vendor/SPDLOG
+	url = https://github.com/gabime/spdlog.git

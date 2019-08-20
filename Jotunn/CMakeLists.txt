@@ -6,6 +6,7 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/GLEW ${PROJECT_SOURCE_DIR}/vendor/
 add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/GLFW ${PROJECT_SOURCE_DIR}/vendor/GLFW/build EXCLUDE_FROM_ALL)
 add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/GLM ${PROJECT_SOURCE_DIR}/vendor/GLM/build EXCLUDE_FROM_ALL)
 add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/ASSIMP ${PROJECT_SOURCE_DIR}/vendor/ASSIMP/build EXCLUDE_FROM_ALL)
+add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/SPDLOG ${PROJECT_SOURCE_DIR}/vendor/SPDLOG/build EXCLUDE_FROM_ALL)
 
 include_directories(${Jotunn_SOURCE_DIR}/vendor/IMGUI)
 add_library(
@@ -33,4 +34,5 @@ target_link_libraries(Jotunn glfw)
 target_link_libraries(Jotunn libglew_static)
 target_link_libraries(Jotunn glm)
 target_link_libraries(Jotunn assimp)
+target_link_libraries(Jotunn spdlog)
 target_link_libraries(Jotunn ImGUI)
