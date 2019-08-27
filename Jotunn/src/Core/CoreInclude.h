@@ -7,7 +7,7 @@
 #include <sstream>
 #include <vector>
 
-#include "Debug/Logging/Log.h"
+#include "Debugging/Logging/Log.h"
 
 /**
  * Simple shortcut for querying individual bits
