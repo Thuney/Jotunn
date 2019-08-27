@@ -2,6 +2,7 @@
 
 class JotunnApplication : public Jotunn::Application
 {
+
 public:
 	JotunnApplication()
 	{

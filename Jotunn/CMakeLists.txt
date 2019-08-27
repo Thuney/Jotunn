@@ -28,7 +28,6 @@ file(GLOB_RECURSE SRCS src/*.cpp)
 file(GLOB_RECURSE HDRS src/*.h)
 
 add_library(Jotunn ${SRCS} ${HDRS})
-include_directories(${HDRS})
 
 target_link_libraries(Jotunn glfw)
 target_link_libraries(Jotunn libglew_static)

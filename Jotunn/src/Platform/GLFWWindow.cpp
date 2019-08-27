@@ -1,6 +1,7 @@
 #include "GLFWWindow.h"
 
 #include "../Core/Event/ApplicationEvent.h"
+#include "../Core/CoreInclude.h"
 
 namespace Jotunn
 {
@@ -23,6 +24,8 @@ namespace Jotunn
 	 */
 	Window* Window::Create(const WindowProps& props)
 	{
+		JOTUNN_INFO("Created GLFW Window");
+
 		return new GLFWWindow(props);
 	}
 

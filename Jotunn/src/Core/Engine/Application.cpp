@@ -1,6 +1,6 @@
 #include "Application.h"
 
-#include <functional>
+#include "../CoreInclude.h"
 
 namespace Jotunn
 {
@@ -63,6 +63,7 @@ namespace Jotunn
 	 */
 	bool Application::OnWindowClose(WindowCloseEvent & e)
 	{
+		JOTUNN_CORE_TRACE("Window Closed Event Triggered");
 		m_Running = false;
 		return true;
 	}

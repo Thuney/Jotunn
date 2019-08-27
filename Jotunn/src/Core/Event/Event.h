@@ -1,13 +1,6 @@
 #pragma once
 
-#include <string>
-#include <ostream>
-
-/**
- * Temporary macro
- * Simple shortcut for querying individual bits
- */
-#define BIT(x) (1 << x)
+#include "../CoreInclude.h"
 
 namespace Jotunn
 {
