@@ -1,7 +1,7 @@
 #include "GLFWWindow.h"
 
-#include "../Core/Event/ApplicationEvent.h"
-#include "../Core/CoreInclude.h"
+#include "../../Core/Event/ApplicationEvent.h"
+#include "../../Core/CoreInclude.h"
 
 namespace Jotunn
 {
@@ -50,6 +50,8 @@ namespace Jotunn
 	 */
 	void GLFWWindow::OnUpdate()
 	{
+		context->SwapBuffers();
+
 		glfwPollEvents();
 	}
 
@@ -97,6 +99,9 @@ namespace Jotunn
 			WindowCloseEvent event;
 			data.EventCallback(event);
 		});
+
+		context = new OpenGLRenderingContext(this->m_Window);
+		context->Init();
 	}
 
 	/**

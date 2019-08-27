@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Core/Engine/Window.h"
-#include "GLFW/glfw3.h"
+#include "../../Core/Engine/Window.h"
+#include "../../Platform/Graphics/OpenGLRenderingContext.h"
 
 namespace Jotunn
 {
@@ -73,5 +73,6 @@ namespace Jotunn
 		 */
 		WindowData m_Data;
 
+		OpenGLRenderingContext* context;
 	};
 }
