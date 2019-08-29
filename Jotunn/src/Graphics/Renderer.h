@@ -1,0 +1,9 @@
+
+
+namespace Jotunn
+{
+	class Renderer
+	{
+
+	};
+}
