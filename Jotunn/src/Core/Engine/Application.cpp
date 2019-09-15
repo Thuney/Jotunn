@@ -33,6 +33,9 @@ namespace Jotunn
 		 * Set the member function OnEvent as the callback for all events from the window
 		 */
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 	/**
@@ -42,28 +45,47 @@ namespace Jotunn
 	{
 		while (m_Running)
 		{
-			//float time = (float)glfwGetTime();
-			//float timestep = time - m_LastFrameTime;
-			//m_LastFrameTime = time;
+			float current_time = m_Window->GetWindowTime();
+			Timestep delta_time(current_time - m_LastFrameTime);
+			m_LastFrameTime = current_time;
+
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate(delta_time);
+
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}
+	}
+
+	void Application::PushLayer(Layer * layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer * layer)
+	{
+		m_LayerStack.PushOverlay(layer);
 	}
 
 	/**
 	 * Callback function for all window events
 	 * Handles application events and propogates other events throughout the engine
 	 */
-	void Application::OnEvent(Event& e)
+	void Application::OnEvent(Event& event)
 	{
-		EventDispatcher dispatcher(e);
+		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		dispatcher.Dispatch<MouseMovedEvent>([](MouseMovedEvent& e)
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
-			JOTUNN_CORE_TRACE("Mouse Moved To Position ({0}, {1})", e.GetX(), e.GetY());
-			return true;
-		});
+			(*--it)->OnEvent(event);
+			if (event.Handled)
+				break;
+		}
 	}
 
 	/**

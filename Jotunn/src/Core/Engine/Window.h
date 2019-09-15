@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Core/Event/Event.h"
+#include "Core/Engine/Timestep.h"
 
 namespace Jotunn
 {
@@ -45,6 +46,8 @@ namespace Jotunn
 
 		virtual unsigned int GetWidth() const = 0;
 		virtual unsigned int GetHeight() const = 0;
+
+		virtual float GetWindowTime() const = 0;
 
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 

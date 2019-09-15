@@ -3,6 +3,8 @@
 #include "Window.h"
 #include "Core/Event/Event.h"
 #include "Core/Event/ApplicationEvent.h"
+#include "LayerStack.h"
+#include "ImGuiLayer.h"
 
 namespace Jotunn
 {
@@ -20,6 +22,9 @@ namespace Jotunn
 			 * The main loop of the application
 			 */
 			void Run();
+
+			void PushLayer(Layer* layer);
+			void PushOverlay(Layer* layer);
 
 			/**
 			 * Event callback function
@@ -43,6 +48,10 @@ namespace Jotunn
 			 */
 			std::unique_ptr<Window> m_Window;
 
+			ImGuiLayer* m_ImGuiLayer;
+
+			LayerStack m_LayerStack;
+
 			/**
 			 * Flag variable to signal if the application is running or not
 			 */
@@ -52,7 +61,7 @@ namespace Jotunn
 			 * Stores the window time of the last frame
 			 * Used for calculating the delta between frames
 			 */
-			float m_LastFrameTime = 0.0f;
+			Timestep m_LastFrameTime = Timestep(0.0f);
 
 			/**
 			 * Class pointer to the current application

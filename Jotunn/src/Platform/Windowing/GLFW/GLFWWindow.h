@@ -23,12 +23,14 @@ namespace Jotunn
 		/**
 		 * Returns the Window's width
 		 */
-		inline unsigned int GetWidth() const override { return m_Data.Width; }
+		inline virtual unsigned int GetWidth() const override { return m_Data.Width; }
 
 		/**
 		 * Returns the Window's height
 		 */
-		inline unsigned int GetHeight() const override { return m_Data.Height; }
+		inline virtual unsigned int GetHeight() const override { return m_Data.Height; }
+
+		virtual float GetWindowTime() const override;
 
 		/**
 		 * Function to set the EventCallbackFn for this Window instance
@@ -39,7 +41,7 @@ namespace Jotunn
 		/**
 		 * Return the raw window type
 		 */
-		inline virtual void* GetNativeWindow() const { return m_Window; }
+		inline virtual void* GetNativeWindow() const override { return m_Window; }
 
 	private:
 		/**

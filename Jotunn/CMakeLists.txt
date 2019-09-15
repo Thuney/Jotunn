@@ -23,8 +23,14 @@ add_library(
 	${PROJECT_SOURCE_DIR}/vendor/IMGUI/imstb_rectpack.h
 	${PROJECT_SOURCE_DIR}/vendor/IMGUI/imstb_textedit.h
 	${PROJECT_SOURCE_DIR}/vendor/IMGUI/imstb_truetype.h
+	${PROJECT_SOURCE_DIR}/vendor/IMGUI/examples/imgui_impl_glfw.h
+	${PROJECT_SOURCE_DIR}/vendor/IMGUI/examples/imgui_impl_glfw.cpp
+	${PROJECT_SOURCE_DIR}/vendor/IMGUI/examples/imgui_impl_opengl3.h
+	${PROJECT_SOURCE_DIR}/vendor/IMGUI/examples/imgui_impl_opengl3.cpp
 )
 target_link_libraries(ImGUI glm)
+target_link_libraries(ImGUI glfw)
+target_link_libraries(ImGUI libglew_static)
 
 include_directories(${Jotunn_SOURCE_DIR}/src)
 

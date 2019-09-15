@@ -17,7 +17,7 @@ namespace Jotunn
 	 */
 	static void GLFWErrorCallback(int error, const char* description)
 	{
-
+		JOTUNN_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
 
 	/**
@@ -55,6 +55,11 @@ namespace Jotunn
 		context->SwapBuffers();
 
 		glfwPollEvents();
+	}
+
+	float GLFWWindow::GetWindowTime() const
+	{
+		return glfwGetTime();
 	}
 
 	/**
@@ -176,6 +181,8 @@ namespace Jotunn
 
 		context = new OpenGLRenderingContext(this->m_Window);
 		context->Init();
+
+		glViewport(0, 0, m_Data.Width, m_Data.Height);
 	}
 
 	/**

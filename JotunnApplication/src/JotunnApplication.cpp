@@ -1,18 +1,20 @@
 #include "Jotunn.h"
 
+#include "TestLayer.h"
+
 class JotunnApplication : public Jotunn::Application
 {
 
-public:
-	JotunnApplication()
-	{
-		
-	}
+	public:
+		JotunnApplication()
+		{
+			PushLayer(new TestLayer());	
+		}
 
-	~JotunnApplication()
-	{
+		~JotunnApplication()
+		{
 
-	}
+		}
 
 };
 
