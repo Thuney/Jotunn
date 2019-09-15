@@ -1,6 +1,8 @@
 #include "Application.h"
 
-#include "../CoreInclude.h"
+#include "Core/CoreInclude.h"
+
+#include "Core/Event/MouseEvent.h"
 
 namespace Jotunn
 {
@@ -56,6 +58,12 @@ namespace Jotunn
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+		dispatcher.Dispatch<MouseMovedEvent>([](MouseMovedEvent& e)
+		{
+			JOTUNN_CORE_TRACE("Mouse Moved To Position ({0}, {1})", e.GetX(), e.GetY());
+			return true;
+		});
 	}
 
 	/**

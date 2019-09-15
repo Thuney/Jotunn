@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Event/Event.h"
+#include "Core/Event/Event.h"
 
 namespace Jotunn
 {

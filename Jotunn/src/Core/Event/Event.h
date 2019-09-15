@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../CoreInclude.h"
+#include "Core/CoreInclude.h"
 
 namespace Jotunn
 {

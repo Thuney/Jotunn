@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Window.h"
-#include "../Event/Event.h"
-#include "../Event//ApplicationEvent.h"
+#include "Core/Event/Event.h"
+#include "Core/Event/ApplicationEvent.h"
 
 namespace Jotunn
 {

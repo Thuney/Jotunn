@@ -1,6 +1,6 @@
 #include "OpenGLRenderingContext.h"
 
-#include "../../Core/CoreInclude.h"
+#include "Core/CoreInclude.h"
 
 namespace Jotunn 
 {

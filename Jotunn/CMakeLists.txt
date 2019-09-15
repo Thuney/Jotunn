@@ -1,5 +1,7 @@
 project (Jotunn)
 cmake_minimum_required(VERSION 3.1)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions(-DGLEW_STATIC)
 add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/GLEW ${PROJECT_SOURCE_DIR}/vendor/GLEW/build EXCLUDE_FROM_ALL)
@@ -23,6 +25,8 @@ add_library(
 	${PROJECT_SOURCE_DIR}/vendor/IMGUI/imstb_truetype.h
 )
 target_link_libraries(ImGUI glm)
+
+include_directories(${Jotunn_SOURCE_DIR}/src)
 
 file(GLOB_RECURSE SRCS src/*.cpp)
 file(GLOB_RECURSE HDRS src/*.h)

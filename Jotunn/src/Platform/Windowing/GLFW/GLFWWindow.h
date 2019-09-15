@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../Core/Engine/Window.h"
-#include "../../Platform/Graphics/OpenGLRenderingContext.h"
+#include "Core/Engine/Window.h"
+#include "Platform/Graphics/OpenGLRenderingContext.h"
 
 namespace Jotunn
 {
@@ -32,7 +32,7 @@ namespace Jotunn
 
 		/**
 		 * Function to set the EventCallbackFn for this Window instance
-		 * Gemerally called by parent Application
+		 * Generally called by parent Application
 		 */
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 
