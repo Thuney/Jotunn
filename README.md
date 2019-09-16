@@ -9,7 +9,7 @@ Jotunn uses Git submodules to manage its dependencies.
 
 To clone the repository and its submodules, simply clone the repository via `git clone --recursive`
 
-# Setting up Jotunn
+# Setting up Jötunn
 
 Jotunn uses [CMake](https://cmake.org/) as a build system, requiring at least CMake version 3.1.
 
