@@ -16,3 +16,5 @@
 [submodule "Jotunn/vendor/SPDLOG"]
 	path = Jotunn/vendor/SPDLOG
 	url = https://github.com/gabime/spdlog.git
+[submodule "IMGUI"]
+	branch = docking

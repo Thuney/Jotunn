@@ -28,7 +28,6 @@ add_library(
 	${PROJECT_SOURCE_DIR}/vendor/IMGUI/examples/imgui_impl_opengl3.h
 	${PROJECT_SOURCE_DIR}/vendor/IMGUI/examples/imgui_impl_opengl3.cpp
 )
-target_link_libraries(ImGUI glm)
 target_link_libraries(ImGUI glfw)
 target_link_libraries(ImGUI libglew_static)
 
@@ -41,7 +40,6 @@ add_library(Jotunn ${SRCS} ${HDRS})
 
 target_link_libraries(Jotunn glfw)
 target_link_libraries(Jotunn libglew_static)
-target_link_libraries(Jotunn glm)
 target_link_libraries(Jotunn assimp)
 target_link_libraries(Jotunn spdlog)
 target_link_libraries(Jotunn ImGUI)
