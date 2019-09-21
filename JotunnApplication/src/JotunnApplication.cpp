@@ -1,5 +1,4 @@
 #include "Jotunn.h"
-
 #include "TestLayer.h"
 
 class JotunnApplication : public Jotunn::Application
