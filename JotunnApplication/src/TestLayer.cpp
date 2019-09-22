@@ -7,7 +7,7 @@
 const GLchar* vertex_shader =
 	"#version 150"										//Defines the GLSL version of this shader to be 1.50
 	"\n"
-	"in vec2 position;"									//Defines an input to the shader which is a 2-dimensional vector
+	"in vec3 position;"									//Defines an input to the shader which is a 2-dimensional vector
 	"in vec3 color;"
 	"\n"
 	"out vec3 f_color;"
@@ -17,7 +17,7 @@ const GLchar* vertex_shader =
 	"\n"
 	"void main()"
 	"{"
-	"	gl_Position = u_ViewProjection * u_Transform * vec4(position, 0.0, 1.0);"		//Set the homogenous coordinates of the vertex given our 2D vector input
+	"	gl_Position = u_ViewProjection * u_Transform * vec4(position, 1.0);"		//Set the homogenous coordinates of the vertex given our 2D vector input
 	"   f_color = color;"
 	"};";
 
