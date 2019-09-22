@@ -7,7 +7,3 @@
 #include "Core/Engine/EntryPoint.h"
 
 #include "Core/Engine/Timestep.h"
-
-#include "Graphics/VertexArray.h"
-
-#include "Graphics/Shader.h"

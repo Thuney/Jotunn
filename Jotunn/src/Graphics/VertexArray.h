@@ -1,6 +1,6 @@
 #pragma once
 
-#include <memory>
+#include "Core/CoreInclude.h"
 #include "Graphics/Buffer.h"
 
 namespace Jotunn

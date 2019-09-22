@@ -5,21 +5,23 @@
 
 namespace Jotunn
 {
-
+	/**
+	 * @brief Stores static instances of spdlog::logger objects for the engine (core) and the client
+	 * Allow for simple printing of formatted and colored console output.
+	 */
 	class Log
 	{
+		public:
+			static void Init();
 
-	public:
-		static void Init();
-
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
-	
-	private:
-		static std::shared_ptr<spdlog::logger> s_CoreLogger;
-		static std::shared_ptr<spdlog::logger> s_ClientLogger;
+			inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
+			inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
+		
+		private:
+			//Loggers for the engine (core) and the client
+			static std::shared_ptr<spdlog::logger> s_CoreLogger;
+			static std::shared_ptr<spdlog::logger> s_ClientLogger;
 	};
-
 }
 
 //Core log macros

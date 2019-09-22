@@ -2,7 +2,6 @@
 
 #include "GL/glew.h"
 #include "glm/glm.hpp"
-
 #include "Graphics/Shader.h"
 
 namespace Jotunn

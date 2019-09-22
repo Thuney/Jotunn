@@ -4,6 +4,8 @@
 
 #include "Core/Event/MouseEvent.h"
 
+//#include "Graphics/Renderer.h"
+
 namespace Jotunn
 {
 	/**
@@ -33,6 +35,8 @@ namespace Jotunn
 		 * Set the member function OnEvent as the callback for all events from the window
 		 */
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		//Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
