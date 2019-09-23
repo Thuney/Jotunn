@@ -13,6 +13,22 @@ namespace Jotunn
 		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
 	}
 
+	const glm::vec3& PerspectiveCamera::GetFront()
+	{
+		m_Orientation = glm::normalize(m_Orientation);
+		glm::mat4 rotate = glm::mat4_cast(m_Orientation);
+
+		return glm::vec3(0.0f, 0.0f, -1.0f) * m_Orientation;
+	}
+
+	const glm::vec3 & PerspectiveCamera::GetLeft()
+	{
+		m_Orientation = glm::normalize(m_Orientation);
+		glm::mat4 rotate = glm::mat4_cast(m_Orientation);
+
+		return glm::vec3(-1.0f, 0.0f, 0.0f) * m_Orientation;
+	}
+
 	void PerspectiveCamera::RecalculateViewMatrix()
 	{
 		m_Orientation = glm::normalize(m_Orientation);

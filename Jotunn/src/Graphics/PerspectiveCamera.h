@@ -22,6 +22,9 @@ namespace Jotunn
 			const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
 			const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
 
+			const glm::vec3& GetFront();
+			const glm::vec3& GetLeft();
+
 		private:
 			glm::mat4 m_ProjectionMatrix;
 			glm::mat4 m_ViewMatrix;

@@ -48,23 +48,23 @@ namespace Jotunn
 
 	bool PerspectiveCameraController::OnKeyPressed(KeyPressedEvent& e)
 	{
-		switch(e.GetKeyCode())
-		{
-			case JOTUNN_KEY_W:
-				m_CameraPosition.z += m_CameraTranslationSpeed;
-				break;
-			case JOTUNN_KEY_A:
-				m_CameraPosition.x += m_CameraTranslationSpeed;
-				break;
-			case JOTUNN_KEY_S:
-				m_CameraPosition.z -= m_CameraTranslationSpeed;
-				break;
-			case JOTUNN_KEY_D:
-				m_CameraPosition.x -= m_CameraTranslationSpeed;
-				break;
-			default:
-				break;
-		}
+		//switch(e.GetKeyCode())
+		//{
+		//	case JOTUNN_KEY_W:
+		//		m_CameraPosition += m_Camera.GetFront()*m_CameraTranslationSpeed;
+		//		break;
+		//	case JOTUNN_KEY_A:
+		//		m_CameraPosition -= m_Camera.GetFront()*m_CameraTranslationSpeed;
+		//		break;
+		//	case JOTUNN_KEY_S:
+		//		m_CameraPosition -= m_Camera.GetLeft()*m_CameraTranslationSpeed;
+		//		break;
+		//	case JOTUNN_KEY_D:
+		//		m_CameraPosition += m_Camera.GetLeft()*m_CameraTranslationSpeed;
+		//		break;
+		//	default:
+		//		break;
+		//}
 
 		m_Camera.SetPosition(m_CameraPosition);
 
