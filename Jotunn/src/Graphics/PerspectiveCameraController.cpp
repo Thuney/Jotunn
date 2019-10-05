@@ -51,7 +51,7 @@ namespace Jotunn
 		}
 	}
 
-	void PerspectiveCameraController::OnEvent(Event & e)
+	void PerspectiveCameraController::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<Jotunn::WindowResizeEvent>(JOTUNN_BIND_EVENT_FN(PerspectiveCameraController::OnWindowResized));
@@ -59,12 +59,12 @@ namespace Jotunn
 		dispatcher.Dispatch<Jotunn::KeyPressedEvent>(JOTUNN_BIND_EVENT_FN(PerspectiveCameraController::OnKeyPressed));
 	}
 
-	bool PerspectiveCameraController::OnWindowResized(WindowResizeEvent & e)
+	bool PerspectiveCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
 		return false;
 	}
 
-	bool PerspectiveCameraController::OnMouseMoved(MouseMovedEvent & e)
+	bool PerspectiveCameraController::OnMouseMoved(MouseMovedEvent& e)
 	{
 		static glm::vec2 previous_mouse_position(e.GetX(), e.GetY());
 

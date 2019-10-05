@@ -33,7 +33,7 @@ const GLchar* fragment_shader =
 	"	outColor = vec4(f_color, 1.0);"					//Set the value of the color output
 	"}";
 
-TestLayer::TestLayer() : Layer("Test Layer"), m_CameraController(1280.0f / 720.0f, 0.1f, 100.0f)
+TestLayer::TestLayer() : Layer("Test Layer"), m_CameraController(1280.0f / 720.0f, 0.1f, 50.0f)
 {
 }
 
@@ -41,24 +41,23 @@ void TestLayer::OnAttach()
 {
 	m_Shader = Jotunn::Shader::Create("SingleColor", vertex_shader, fragment_shader);
 
-	//Hardcoded array of our triangle vertices in (X, Y) pairs
-	//Note that these values are in the range [-1.0, 1.0] to fit in
-	//OpenGL's unprojected coordinate system
-	triangle_vertex_data = new float[18]
+	float cube_vertices[48] =
 	{
-		//First Triangle
-		0.0f,  0.5f, -1.0f,		//Vertex 1 (X, Y, Z), top point
-		1.0f,  0.0f,  0.0f,
-		0.5f, -0.5f, -1.0f,		//Vertex 2 (X, Y, Z), bottom right point
-		0.0f,  1.0f,  0.0f,
-	   -0.5f, -0.5f, -1.0f,		//Vertex 3 (X, Y, Z), bottom left point
-		0.0f,  0.0f,  1.0f
+		-1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,
+		 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+		-1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,
+
+		-1.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f,
+		 1.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+		 1.0f, 1.0f, -1.0f, 0.0f, 0.0f, 1.0f,
+		-1.0f, 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
 	};
 
 	m_VertexArray.reset(Jotunn::VertexArray::Create());	
 
 	std::shared_ptr<Jotunn::VertexBuffer> vertexBuffer;
-	vertexBuffer.reset(Jotunn::VertexBuffer::Create(triangle_vertex_data, 18*sizeof(float)));
+	vertexBuffer.reset(Jotunn::VertexBuffer::Create(cube_vertices, 48*sizeof(float)));
 	Jotunn::BufferLayout layout =
 	{
 		{ Jotunn::ShaderDataType::Float3, "position" },
@@ -67,7 +66,14 @@ void TestLayer::OnAttach()
 	vertexBuffer->SetLayout(layout);
 	m_VertexArray->AddVertexBuffer(vertexBuffer);
 
-	uint32_t triangle_indices[6] = { 0, 1, 2};
+	uint32_t triangle_indices[36] = { 
+									  3, 0, 1, 3, 2, 1, 
+									  7, 4, 0, 7, 3, 0,
+									  2, 1, 5, 2, 6, 5,
+									  2, 3, 7, 2, 6, 7,
+									  1, 0, 4, 1, 5, 4,
+									  6, 5, 4, 6, 7, 4,
+									};
 
 	std::shared_ptr<Jotunn::IndexBuffer> indexBuffer;
 	indexBuffer.reset(Jotunn::IndexBuffer::Create(triangle_indices, sizeof(triangle_indices) / sizeof(uint32_t)));
@@ -81,10 +87,10 @@ void TestLayer::OnDetach()
 
 void TestLayer::OnUpdate(Jotunn::Timestep ts)
 {
-	m_CameraController.OnUpdate(ts);
-
 	Jotunn::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 	Jotunn::RenderCommand::Clear();
+
+	m_CameraController.OnUpdate(ts);
 
 	Jotunn::Renderer::BeginScene(m_CameraController.GetCamera());
 
