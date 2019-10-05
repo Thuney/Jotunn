@@ -6,7 +6,7 @@ namespace Jotunn
 {
 	PerspectiveCamera::PerspectiveCamera(const float aspect_ratio, const float nearPlane, const float farPlane, const glm::vec3 position, const glm::quat orientation) : m_ProjectionMatrix(glm::perspective(glm::radians(45.0f), aspect_ratio, nearPlane, farPlane)), m_ViewMatrix(1.0f)
 	{
-		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
+		RecalculateViewMatrix();
 	}
 
 	void PerspectiveCamera::SetProjection(const float aspect_ratio, const float nearPlane, const float farPlane)

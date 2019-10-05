@@ -13,7 +13,7 @@ namespace Jotunn
 	class PerspectiveCameraController
 	{
 		public:
-			PerspectiveCameraController(float aspectRatio, const float nearPlane, const float farPlane, const glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, 1.0f), const glm::quat orientation = glm::quat(glm::vec3(glm::radians(0.0f), glm::radians(0.0f), glm::radians(0.0f))));
+			PerspectiveCameraController(float aspectRatio, const float nearPlane, const float farPlane, const glm::vec3 cameraPosition = glm::vec3(-1.0f, -2.0f, 5.0f), const glm::quat orientation = glm::quat(glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f)));
 
 			void OnUpdate(Timestep ts);
 			void OnEvent(Event& e);

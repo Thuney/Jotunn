@@ -6,6 +6,8 @@ namespace Jotunn
 {
 	PerspectiveCameraController::PerspectiveCameraController(float aspectRatio, const float nearPlane, const float farPlane, const glm::vec3 cameraPosition, const glm::quat orientation) : m_AspectRatio(aspectRatio), m_NearPlane(nearPlane), m_FarPlane(farPlane), m_CameraPosition(cameraPosition), m_Orientation(orientation), m_Camera(m_AspectRatio, m_NearPlane, m_FarPlane, m_CameraPosition, m_Orientation)
 	{
+		m_Camera.SetPosition(m_CameraPosition);
+		m_Camera.SetOrientation(m_Orientation);
 	}
 
 	void PerspectiveCameraController::OnUpdate(Timestep ts)
