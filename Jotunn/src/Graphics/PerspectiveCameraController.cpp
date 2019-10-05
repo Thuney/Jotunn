@@ -70,6 +70,7 @@ namespace Jotunn
 		static const float mouseX_Sensitivity = 0.02f;
 		static const float mouseY_Sensitivity = 0.02f;
 
+		//Right Mouse Button
 		if (Input::IsMouseButtonPressed(1))
 		{
 			glm::vec2 mouse_delta = glm::vec2(e.GetX(), e.GetY()) - previous_mouse_position;
