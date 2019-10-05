@@ -67,24 +67,26 @@ namespace Jotunn
 	bool PerspectiveCameraController::OnMouseMoved(MouseMovedEvent& e)
 	{
 		static glm::vec2 previous_mouse_position(e.GetX(), e.GetY());
+		static const float mouseX_Sensitivity = 0.02f;
+		static const float mouseY_Sensitivity = 0.02f;
 
-		glm::vec2 mouse_delta = glm::vec2(e.GetX(), e.GetY()) - previous_mouse_position;
+		if (Input::IsMouseButtonPressed(1))
+		{
+			glm::vec2 mouse_delta = glm::vec2(e.GetX(), e.GetY()) - previous_mouse_position;
+
+			float key_yaw = mouseX_Sensitivity * mouse_delta.x;
+			float key_pitch = mouseY_Sensitivity * mouse_delta.y;
+
+			glm::quat key_pitch_quat = glm::quat(glm::vec3(key_pitch, 0.0f, 0.0f));
+			glm::quat key_yaw_quat = glm::quat(glm::vec3(0.0f, key_yaw, 0.0f));
+
+			m_Orientation = key_pitch_quat * m_Orientation * key_yaw_quat;
+
+			m_Camera.SetOrientation(m_Orientation);
+		}
 
 		previous_mouse_position.x = e.GetX();
 		previous_mouse_position.y = e.GetY();
-
-		const float mouseX_Sensitivity = 0.02f;
-		const float mouseY_Sensitivity = 0.02f;
-
-		float key_yaw = mouseX_Sensitivity * mouse_delta.x;
-		float key_pitch = mouseY_Sensitivity * mouse_delta.y;
-
-		glm::quat key_pitch_quat = glm::quat(glm::vec3(key_pitch, 0.0f, 0.0f));
-		glm::quat key_yaw_quat = glm::quat(glm::vec3(0.0f, key_yaw, 0.0f));
-
-		m_Orientation = key_pitch_quat * m_Orientation * key_yaw_quat;
-		
-		m_Camera.SetOrientation(m_Orientation);
 
 		return true;
 	}

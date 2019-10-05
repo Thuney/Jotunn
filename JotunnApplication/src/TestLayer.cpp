@@ -39,19 +39,21 @@ TestLayer::TestLayer() : Layer("Test Layer"), m_CameraController(1280.0f / 720.0
 
 void TestLayer::OnAttach()
 {
+	Jotunn::Renderer::Init();
+
 	m_Shader = Jotunn::Shader::Create("SingleColor", vertex_shader, fragment_shader);
 
 	float cube_vertices[48] =
 	{
-		-1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-		 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,
-		 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-		-1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,
+		-0.5f, 0.0f, 0.5f, 0.0f, 0.0f, 1.0f,
+		 0.5f, 0.0f, 0.5f, 0.0f, 0.0f, 1.0f,
+		 0.5f, 1.0f, 0.5f, 1.0f, 0.0f, 0.0f,
+		-0.5f, 1.0f, 0.5f, 1.0f, 0.0f, 0.0f,
 
-		-1.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f,
-		 1.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f,
-		 1.0f, 1.0f, -1.0f, 0.0f, 0.0f, 1.0f,
-		-1.0f, 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+		-0.5f, 0.0f, -0.5f, 0.0f, 0.0f, 1.0f,
+		 0.5f, 0.0f, -0.5f, 0.0f, 0.0f, 1.0f,
+		 0.5f, 1.0f, -0.5f, 1.0f, 0.0f, 0.0f,
+		-0.5f, 1.0f, -0.5f, 1.0f, 0.0f, 0.0f,
 	};
 
 	m_VertexArray.reset(Jotunn::VertexArray::Create());	
@@ -67,12 +69,12 @@ void TestLayer::OnAttach()
 	m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 	uint32_t triangle_indices[36] = { 
-									  3, 0, 1, 3, 2, 1, 
-									  7, 4, 0, 7, 3, 0,
-									  2, 1, 5, 2, 6, 5,
-									  2, 3, 7, 2, 6, 7,
-									  1, 0, 4, 1, 5, 4,
-									  6, 5, 4, 6, 7, 4,
+									  3, 0, 1, 3, 1, 2,
+									  2, 1, 5, 2, 5, 6,
+									  7, 3, 2, 7, 2, 6,
+									  6, 5, 4, 6, 4, 7,
+									  7, 4, 0, 7, 0, 3,
+									  0, 4, 5, 0, 5, 1,
 									};
 
 	std::shared_ptr<Jotunn::IndexBuffer> indexBuffer;
