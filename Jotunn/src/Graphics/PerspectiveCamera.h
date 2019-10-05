@@ -22,8 +22,9 @@ namespace Jotunn
 			const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
 			const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
 
-			const glm::vec3& GetFront();
-			const glm::vec3& GetLeft();
+			const glm::vec3 GetFront();
+			const glm::vec3 GetLeft();
+			const glm::vec3 GetUp();
 
 		private:
 			glm::mat4 m_ProjectionMatrix;
@@ -31,7 +32,7 @@ namespace Jotunn
 			glm::mat4 m_ViewProjectionMatrix;
 
 			glm::vec3 m_Position = { 0.0f, 0.0f, 0.0f };
-			glm::quat m_Orientation = glm::quat(glm::vec3(0.0f, 1.0f, 0.0f));
+			glm::quat m_Orientation = glm::quat(glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 			void RecalculateViewMatrix();
 	};

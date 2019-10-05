@@ -34,6 +34,6 @@ namespace Jotunn
 
 			glm::vec3 m_CameraPosition;
 			glm::quat m_Orientation;
-			float m_CameraTranslationSpeed = 0.7f;
+			float m_CameraTranslationSpeed = 4.0f;
 	};
 }

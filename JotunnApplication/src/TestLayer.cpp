@@ -81,6 +81,8 @@ void TestLayer::OnDetach()
 
 void TestLayer::OnUpdate(Jotunn::Timestep ts)
 {
+	m_CameraController.OnUpdate(ts);
+
 	Jotunn::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 	Jotunn::RenderCommand::Clear();
 
@@ -103,7 +105,7 @@ void TestLayer::OnEvent(Jotunn::Event& e)
 	Jotunn::EventDispatcher dispatcher(e);
 	dispatcher.Dispatch<Jotunn::MouseMovedEvent>([](Jotunn::MouseMovedEvent& e)
 	{
-		JOTUNN_CORE_TRACE("Mouse Moved To Position ({0}, {1})", e.GetX(), e.GetY());
+		//JOTUNN_CORE_TRACE("Mouse Moved To Position ({0}, {1})", e.GetX(), e.GetY());
 		return false;
 	});
 }

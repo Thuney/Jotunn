@@ -1,5 +1,7 @@
 #include "PerspectiveCameraController.h"
 
+#include "Core/Engine/Input.h"
+
 namespace Jotunn
 {
 	PerspectiveCameraController::PerspectiveCameraController(float aspectRatio, const float nearPlane, const float farPlane, const glm::vec3 cameraPosition, const glm::quat orientation) : m_AspectRatio(aspectRatio), m_NearPlane(nearPlane), m_FarPlane(farPlane), m_CameraPosition(cameraPosition), m_Orientation(orientation), m_Camera(m_AspectRatio, m_NearPlane, m_FarPlane, m_CameraPosition, m_Orientation)
@@ -8,6 +10,45 @@ namespace Jotunn
 
 	void PerspectiveCameraController::OnUpdate(Timestep ts)
 	{
+		if (Input::IsKeyPressed(JOTUNN_KEY_W))
+		{
+			m_CameraPosition -= m_Camera.GetFront() * m_CameraTranslationSpeed * ts.GetSeconds();
+			m_Camera.SetPosition(m_CameraPosition);
+		}
+
+		if (Input::IsKeyPressed(JOTUNN_KEY_A))
+		{
+			m_CameraPosition -= m_Camera.GetLeft() * m_CameraTranslationSpeed * ts.GetSeconds();
+			m_Camera.SetPosition(m_CameraPosition);
+		}
+
+		if (Input::IsKeyPressed(JOTUNN_KEY_S))
+		{
+			m_CameraPosition += m_Camera.GetFront() * m_CameraTranslationSpeed * ts.GetSeconds();
+			m_Camera.SetPosition(m_CameraPosition);
+		}
+
+		if (Input::IsKeyPressed(JOTUNN_KEY_D))
+		{
+			m_CameraPosition += m_Camera.GetLeft() * m_CameraTranslationSpeed * ts.GetSeconds();
+			m_Camera.SetPosition(m_CameraPosition);
+		}
+
+		if (Input::IsKeyPressed(JOTUNN_KEY_Q))
+		{
+			glm::quat key_roll_quat = glm::quat(glm::vec3(0.0f, 0.0f, 0.1f));
+
+			m_Orientation = key_roll_quat * m_Orientation;
+			m_Camera.SetOrientation(m_Orientation);
+		}
+
+		if (Input::IsKeyPressed(JOTUNN_KEY_E))
+		{
+			glm::quat key_roll_quat = glm::quat(glm::vec3(0.0f, 0.0f, -0.1f));
+
+			m_Orientation = key_roll_quat * m_Orientation;
+			m_Camera.SetOrientation(m_Orientation);
+		}
 	}
 
 	void PerspectiveCameraController::OnEvent(Event & e)
@@ -38,8 +79,10 @@ namespace Jotunn
 		float key_yaw = mouseX_Sensitivity * mouse_delta.x;
 		float key_pitch = mouseY_Sensitivity * mouse_delta.y;
 
-		glm::quat key_quat = glm::quat(glm::vec3(key_pitch, key_yaw, 0.0f));
-		m_Orientation = key_quat * m_Orientation;
+		glm::quat key_pitch_quat = glm::quat(glm::vec3(key_pitch, 0.0f, 0.0f));
+		glm::quat key_yaw_quat = glm::quat(glm::vec3(0.0f, key_yaw, 0.0f));
+
+		m_Orientation = key_pitch_quat * m_Orientation * key_yaw_quat;
 		
 		m_Camera.SetOrientation(m_Orientation);
 
@@ -48,26 +91,6 @@ namespace Jotunn
 
 	bool PerspectiveCameraController::OnKeyPressed(KeyPressedEvent& e)
 	{
-		//switch(e.GetKeyCode())
-		//{
-		//	case JOTUNN_KEY_W:
-		//		m_CameraPosition += m_Camera.GetFront()*m_CameraTranslationSpeed;
-		//		break;
-		//	case JOTUNN_KEY_A:
-		//		m_CameraPosition -= m_Camera.GetFront()*m_CameraTranslationSpeed;
-		//		break;
-		//	case JOTUNN_KEY_S:
-		//		m_CameraPosition -= m_Camera.GetLeft()*m_CameraTranslationSpeed;
-		//		break;
-		//	case JOTUNN_KEY_D:
-		//		m_CameraPosition += m_Camera.GetLeft()*m_CameraTranslationSpeed;
-		//		break;
-		//	default:
-		//		break;
-		//}
-
-		m_Camera.SetPosition(m_CameraPosition);
-
 		return true;
 	}
 }
