@@ -1,7 +1,6 @@
 #pragma once
 
 #include "RendererAPI.h"
-#include "VertexArray.h"
 #include "glm/glm.hpp"
 #include <memory>
 
@@ -28,6 +27,11 @@ namespace Jotunn
 			inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
 			{
 				s_RendererAPI->DrawIndexed(vertexArray);
+			}
+
+			inline static void DrawIndexed(const std::shared_ptr<Mesh>& mesh)
+			{
+				s_RendererAPI->DrawIndexed(mesh);
 			}
 
 		private:

@@ -7,6 +7,7 @@
 #include "Graphics/PerspectiveCameraController.h"
 #include "Graphics/Shader.h"
 #include "Graphics/VertexArray.h"
+#include "Graphics/Mesh.h"
 
 class TestLayer : public Jotunn::Layer
 {
@@ -24,7 +25,8 @@ class TestLayer : public Jotunn::Layer
 		Jotunn::PerspectiveCameraController m_CameraController;
 
 		std::shared_ptr<Jotunn::Shader> m_Shader = nullptr;
-		std::shared_ptr<Jotunn::VertexArray> m_VertexArray = nullptr;
+		std::shared_ptr<Jotunn::Mesh> m_BoxMesh  = nullptr;
+		//std::shared_ptr<Jotunn::VertexArray> m_VertexArray = nullptr;
 
 		//Hardcoded array of our triangle vertices in (X, Y) pairs
 		//Note that these values are in the range [-1.0, 1.0] to fit in

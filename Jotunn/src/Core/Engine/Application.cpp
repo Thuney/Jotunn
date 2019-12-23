@@ -4,8 +4,6 @@
 
 #include "Core/Event/MouseEvent.h"
 
-//#include "Graphics/Renderer.h"
-
 namespace Jotunn
 {
 	/**

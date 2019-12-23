@@ -32,6 +32,7 @@ target_link_libraries(ImGUI glfw)
 target_link_libraries(ImGUI libglew_static)
 
 include_directories(${Jotunn_SOURCE_DIR}/src)
+include_directories(${Jotunn_SOURCE_DIR}/src/Core/Engine/)
 
 file(GLOB_RECURSE SRCS src/*.cpp)
 file(GLOB_RECURSE HDRS src/*.h)

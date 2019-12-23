@@ -26,4 +26,9 @@ namespace Jotunn
 	{
 		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 	}
+
+	void OpenGLRendererAPI::DrawIndexed(const std::shared_ptr<Mesh>& mesh)
+	{
+		glDrawElements(GL_TRIANGLES, mesh->GetElementCount(), GL_UNSIGNED_INT, nullptr);
+	}
 }

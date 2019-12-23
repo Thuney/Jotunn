@@ -1,0 +1,15 @@
+#pragma once
+
+// From glfw3.h
+#define JOTUNN__MOUSE_BUTTON_1         0
+#define JOTUNN__MOUSE_BUTTON_2         1
+#define JOTUNN__MOUSE_BUTTON_3         2
+#define JOTUNN__MOUSE_BUTTON_4         3
+#define JOTUNN__MOUSE_BUTTON_5         4
+#define JOTUNN__MOUSE_BUTTON_6         5
+#define JOTUNN__MOUSE_BUTTON_7         6
+#define JOTUNN__MOUSE_BUTTON_8         7
+#define JOTUNN__MOUSE_BUTTON_LAST      JOTUNN__MOUSE_BUTTON_8
+#define JOTUNN__MOUSE_BUTTON_LEFT      JOTUNN__MOUSE_BUTTON_1
+#define JOTUNN__MOUSE_BUTTON_RIGHT     JOTUNN__MOUSE_BUTTON_2
+#define JOTUNN__MOUSE_BUTTON_MIDDLE    JOTUNN__MOUSE_BUTTON_3

@@ -41,7 +41,6 @@ namespace Jotunn
 
 	void OpenGLRenderingContext::SwapBuffers()
 	{
-
 		glfwSwapBuffers(m_WindowHandle);
 	}
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "VertexArray.h"
+#include "Mesh.h"
 #include "glm/glm.hpp"
 #include <memory>
 
@@ -20,6 +20,7 @@ namespace Jotunn
 			virtual void Clear() = 0;
 
 			virtual void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) = 0;
+			virtual void DrawIndexed(const std::shared_ptr<Mesh>& mesh) = 0;
 
 			inline static API GetAPI() { return s_API; }
 
