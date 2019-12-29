@@ -2,14 +2,17 @@
 
 #include "VertexArray.h"
 #include "Buffer.h"
+#include "Uniform.h"
 
 namespace Jotunn
 {
+	class Shader;
+
 	class MeshGeometry
 	{
 		public:
 
-			MeshGeometry(std::shared_ptr<VertexArray> vao, std::shared_ptr<VertexBuffer> vbo, const BufferLayout& vbo_layout, std::shared_ptr<IndexBuffer> ibo);
+			MeshGeometry(const std::shared_ptr<VertexArray>& vao, const std::shared_ptr<VertexBuffer>& vbo, const BufferLayout& vbo_layout, const std::shared_ptr<IndexBuffer>& ibo);
 			~MeshGeometry();
 
 			int GetElementCount()
@@ -37,17 +40,14 @@ namespace Jotunn
 	{
 		public:
 
-			MeshMaterial()
-			{
+			MeshMaterial(const std::shared_ptr<std::vector<Uniform*>>& material_uniforms);
+			~MeshMaterial();
 
-			}
-
-			~MeshMaterial()
-			{
-
-			}
+			void Bind(Shader& shader);
 
 		private:
+
+			std::shared_ptr<std::vector<Uniform*>> uniforms;
 
 	};
 
@@ -62,7 +62,8 @@ namespace Jotunn
 			{
 				return this->geometry->GetElementCount();
 			}
-			void Bind();
+
+			void Bind(Shader& shader);
 
 		private:
 

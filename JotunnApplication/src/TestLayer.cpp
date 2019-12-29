@@ -1,10 +1,12 @@
 #include "TestLayer.h"
 
-#include "GL/glew.h"
+#include "glm/gtc/type_ptr.hpp"
 
 TestLayer::TestLayer() : Layer("Test Layer"), m_CameraController(1280.0f / 720.0f, 0.1f, 50.0f)
 {
 }
+
+glm::vec3 color(0.0f, 1.0f, 0.0f);
 
 void TestLayer::OnAttach()
 {
@@ -14,15 +16,15 @@ void TestLayer::OnAttach()
 
 	float cube_vertices[48] =
 	{
-		-0.5f, 0.0f, 0.5f, 1.0f, 0.0f, 0.0f,
-		 0.5f, 0.0f, 0.5f, 1.0f, 0.0f, 0.0f,
-		 0.5f, 1.0f, 0.5f, 1.0f, 0.0f, 0.0f,
-		-0.5f, 1.0f, 0.5f, 1.0f, 0.0f, 0.0f,
+		-0.5f, 0.0f, 0.5f,
+		 0.5f, 0.0f, 0.5f,
+		 0.5f, 1.0f, 0.5f,
+		-0.5f, 1.0f, 0.5f,
 
-		-0.5f, 0.0f, -0.5f, 1.0f, 0.0f, 0.0f,
-		 0.5f, 0.0f, -0.5f, 1.0f, 0.0f, 0.0f,
-		 0.5f, 1.0f, -0.5f, 1.0f, 0.0f, 0.0f,
-		-0.5f, 1.0f, -0.5f, 1.0f, 0.0f, 0.0f,
+		-0.5f, 0.0f, -0.5f,
+		 0.5f, 0.0f, -0.5f,
+		 0.5f, 1.0f, -0.5f,
+		-0.5f, 1.0f, -0.5f
 	};
 
 	std::shared_ptr<Jotunn::VertexArray> vertexArray;
@@ -32,8 +34,7 @@ void TestLayer::OnAttach()
 	vertexBuffer.reset(Jotunn::VertexBuffer::Create(cube_vertices, 48*sizeof(float)));
 	Jotunn::BufferLayout layout =
 	{
-		{ Jotunn::ShaderDataType::Float3, "position" },
-		{ Jotunn::ShaderDataType::Float3, "color" }
+		{ Jotunn::ShaderDataType::Float3, "position" }
 	};
 
 	uint32_t triangle_indices[36] = { 
@@ -47,7 +48,11 @@ void TestLayer::OnAttach()
 	std::shared_ptr<Jotunn::IndexBuffer> indexBuffer;
 	indexBuffer.reset(Jotunn::IndexBuffer::Create(triangle_indices, sizeof(triangle_indices) / sizeof(uint32_t)));
 
-	m_BoxMesh.reset(new Jotunn::Mesh(new Jotunn::MeshGeometry(vertexArray, vertexBuffer, layout, indexBuffer), new Jotunn::MeshMaterial()));
+	std::shared_ptr<std::vector<Jotunn::Uniform*>> material_uniforms;
+	material_uniforms.reset(new std::vector<Jotunn::Uniform*>);
+	material_uniforms->push_back(new Jotunn::Float3Uniform("u_Color", color));
+
+	m_BoxMesh.reset(new Jotunn::Mesh(new Jotunn::MeshGeometry(vertexArray, vertexBuffer, layout, indexBuffer), new Jotunn::MeshMaterial(material_uniforms)));
 
 }
 
@@ -72,7 +77,9 @@ void TestLayer::OnUpdate(Jotunn::Timestep ts)
 
 void TestLayer::OnImGuiRender()
 {
-		
+	ImGui::Begin("Uniform Control");
+	ImGui::ColorEdit3("Square Color", glm::value_ptr(color));
+	ImGui::End();
 }
 
 void TestLayer::OnEvent(Jotunn::Event& e)

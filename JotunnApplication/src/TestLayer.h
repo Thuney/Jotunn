@@ -1,13 +1,6 @@
 #pragma once
 
-#include "Core/Engine/Layer.h"
-#include "Core/Event/Event.h"
-#include "Core/Event/MouseEvent.h"
-#include "Graphics/Renderer.h"
-#include "Graphics/PerspectiveCameraController.h"
-#include "Graphics/Shader.h"
-#include "Graphics/VertexArray.h"
-#include "Graphics/Mesh.h"
+#include "Jotunn.h"
 
 class TestLayer : public Jotunn::Layer
 {

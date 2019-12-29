@@ -5,6 +5,7 @@ file(GLOB_RECURSE SRCS src/*.cpp)
 file(GLOB_RECURSE HDRS src/*.h)
 
 include_directories(${Jotunn_SOURCE_DIR}/src)
+include_directories(${Jotunn_SOURCE_DIR}/vendor/IMGUI)
 
 add_executable(JotunnApplication ${SRCS} ${HDRS})
 

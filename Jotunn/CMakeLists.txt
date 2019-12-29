@@ -10,7 +10,7 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/GLM ${PROJECT_SOURCE_DIR}/vendor/G
 add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/ASSIMP ${PROJECT_SOURCE_DIR}/vendor/ASSIMP/build EXCLUDE_FROM_ALL)
 add_subdirectory(${PROJECT_SOURCE_DIR}/vendor/SPDLOG ${PROJECT_SOURCE_DIR}/vendor/SPDLOG/build EXCLUDE_FROM_ALL)
 
-include_directories(${PROJECT_SOURCE_DIR}/vendor/IMGUI)
+include_directories(${Jotunn_SOURCE_DIR}/vendor/IMGUI)
 add_library(
 	ImGUI
 	${PROJECT_SOURCE_DIR}/vendor/IMGUI/imconfig.h
@@ -32,7 +32,6 @@ target_link_libraries(ImGUI glfw)
 target_link_libraries(ImGUI libglew_static)
 
 include_directories(${Jotunn_SOURCE_DIR}/src)
-include_directories(${Jotunn_SOURCE_DIR}/src/Core/Engine/)
 
 file(GLOB_RECURSE SRCS src/*.cpp)
 file(GLOB_RECURSE HDRS src/*.h)
@@ -40,8 +39,8 @@ file(GLOB_RECURSE HDRS src/*.h)
 add_library(Jotunn ${SRCS} ${HDRS})
 
 target_link_libraries(Jotunn glfw)
-target_link_libraries(Jotunn libglew_static)
 target_link_libraries(Jotunn glm)
+target_link_libraries(Jotunn libglew_static)
 target_link_libraries(Jotunn assimp)
 target_link_libraries(Jotunn spdlog)
 target_link_libraries(Jotunn ImGUI)

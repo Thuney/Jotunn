@@ -10,4 +10,5 @@ namespace Jotunn
 	{
 		return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
 	}
+
 }

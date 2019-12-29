@@ -1,4 +1,7 @@
+#pragma once
+
 #include "Jotunn.h"
+#include "Core/Engine/EntryPoint.h"
 #include "TestLayer.h"
 
 class JotunnApplication : public Jotunn::Application

@@ -107,6 +107,61 @@ namespace Jotunn
 		glUseProgram(0);
 	}
 
+	void OpenGLShader::UploadUniform(const Uniform& uniform)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, uniform.m_Name.c_str());
+
+		switch (uniform.m_Type)
+		{
+			case ShaderDataType::Float:
+			{
+
+			}
+			case ShaderDataType::Float2:
+			{
+
+			}
+			case ShaderDataType::Float3:
+			{
+				Float3Uniform& u = ((Float3Uniform&) uniform);
+				glUniform3f(location, u.m_Value.x, u.m_Value.y, u.m_Value.z);
+			}
+			case ShaderDataType::Float4:
+			{
+
+			}
+			case ShaderDataType::Mat3:
+			{
+
+			}
+			case ShaderDataType::Mat4:
+			{
+
+			}
+			case ShaderDataType::Int:
+			{
+
+			}
+			case ShaderDataType::Int2:
+			{
+
+			}
+			case ShaderDataType::Int3:
+			{
+
+			}
+			case ShaderDataType::Int4:
+			{
+
+			}
+			case ShaderDataType::Bool:
+			{
+
+			}
+		}
+
+	}
+
 	void OpenGLShader::UploadUniformInt(const std::string& name, int value)
 	{
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());

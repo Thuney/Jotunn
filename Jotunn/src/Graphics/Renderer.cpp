@@ -36,7 +36,7 @@ namespace Jotunn
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
 
-		mesh->Bind();
+		mesh->Bind(*shader);
 		RenderCommand::DrawIndexed(mesh);
 	}
 }
