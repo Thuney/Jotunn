@@ -63,7 +63,11 @@ namespace Jotunn
 
 	bool PerspectiveCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
-		return false;
+		m_Camera.SetProjection(((float)e.GetWidth() / (float)e.GetHeight()), 0.1f, 50.0f);
+
+		JOTUNN_CORE_TRACE("Window Resize Event with proportions : ({0}, {1})", (float)e.GetWidth(), (float)e.GetHeight());
+
+		return true;
 	}
 
 	bool PerspectiveCameraController::OnMouseMoved(MouseMovedEvent& e)

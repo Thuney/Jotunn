@@ -44,7 +44,7 @@ void TestLayer::OnAttach()
 									  6, 5, 4, 6, 4, 7,
 									  7, 4, 0, 7, 0, 3,
 									  0, 4, 5, 0, 5, 1,
-									};
+					};
 	std::shared_ptr<Jotunn::IndexBuffer> indexBuffer;
 	indexBuffer.reset(Jotunn::IndexBuffer::Create(triangle_indices, sizeof(triangle_indices) / sizeof(uint32_t)));
 
@@ -92,4 +92,6 @@ void TestLayer::OnEvent(Jotunn::Event& e)
 		//JOTUNN_CORE_TRACE("Mouse Moved To Position ({0}, {1})", e.GetX(), e.GetY());
 		return false;
 	});
+
+
 }

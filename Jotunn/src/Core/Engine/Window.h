@@ -32,7 +32,7 @@ namespace Jotunn
 			 */
 			using EventCallbackFn = std::function<void(Event&)>;
 
-			Window::Window()
+			Window()
 			{
 
 			}
