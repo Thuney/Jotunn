@@ -24,12 +24,12 @@ namespace Jotunn
 				s_RendererAPI->Clear();
 			}
 
-			inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+			inline static void DrawIndexed(const std::unique_ptr<VertexArray>& vertexArray)
 			{
 				s_RendererAPI->DrawIndexed(vertexArray);
 			}
 
-			inline static void DrawIndexed(const std::shared_ptr<Mesh>& mesh)
+			inline static void DrawIndexed(const std::unique_ptr<Mesh>& mesh)
 			{
 				s_RendererAPI->DrawIndexed(mesh);
 			}

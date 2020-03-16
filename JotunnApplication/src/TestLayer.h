@@ -7,6 +7,7 @@ class TestLayer : public Jotunn::Layer
 	public:
 
 		TestLayer();
+		~TestLayer();
 
 		void OnAttach() override;
 		void OnDetach() override;
@@ -15,10 +16,16 @@ class TestLayer : public Jotunn::Layer
 		void OnEvent(Jotunn::Event& event) override;
 
 	private:
+
+		glm::vec3 color;
+
 		Jotunn::PerspectiveCameraController m_CameraController;
 
 		std::shared_ptr<Jotunn::Shader> m_Shader = nullptr;
-		std::shared_ptr<Jotunn::Mesh> m_BoxMesh  = nullptr;
+
+		std::shared_ptr<Jotunn::MeshMaterial> cube_material = nullptr;
+		std::shared_ptr<Jotunn::MeshGeometry> cube_geom = nullptr;
+		std::unique_ptr<Jotunn::Mesh> m_BoxMesh  = nullptr;
 		//std::shared_ptr<Jotunn::VertexArray> m_VertexArray = nullptr;
 
 		//Hardcoded array of our triangle vertices in (X, Y) pairs

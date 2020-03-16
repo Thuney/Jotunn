@@ -12,7 +12,7 @@ namespace Jotunn
 			virtual void SetClearColor(const glm::vec4& color) override;
 			virtual void Clear() override;
 
-			virtual void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) override;
-			virtual void DrawIndexed(const std::shared_ptr<Mesh>& mesh) override;
+			virtual void DrawIndexed(const std::unique_ptr<VertexArray>& vertexArray) override;
+			virtual void DrawIndexed(const std::unique_ptr<Mesh>& mesh) override;
 	};
 }

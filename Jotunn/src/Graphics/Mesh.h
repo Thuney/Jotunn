@@ -12,7 +12,9 @@ namespace Jotunn
 	{
 		public:
 
-			MeshGeometry(const std::shared_ptr<VertexArray>& vao, const std::shared_ptr<VertexBuffer>& vbo, const BufferLayout& vbo_layout, const std::shared_ptr<IndexBuffer>& ibo);
+			MeshGeometry(std::unique_ptr<VertexArray>& vao, std::shared_ptr<VertexBuffer> vbo, const BufferLayout& vbo_layout, std::shared_ptr<IndexBuffer> ibo);
+			MeshGeometry();
+
 			~MeshGeometry();
 
 			int GetElementCount()
@@ -21,33 +23,34 @@ namespace Jotunn
 			}
 			void Bind();
 
-		private:
+		protected:
 
-			std::shared_ptr<VertexArray>  vao;
+			std::unique_ptr<VertexArray>  vao;
 			std::shared_ptr<VertexBuffer> vbo;
 			BufferLayout vbo_layout;
 			std::shared_ptr<IndexBuffer>  ibo;
 
-			void SetUpGeometry()
-			{
-				this->vbo->SetLayout(this->vbo_layout);
-				this->vao->AddVertexBuffer(this->vbo);
-				this->vao->SetIndexBuffer(this->ibo);
-			}
+			// Setup of geometry - placing geometry data in the buffers, etc. - differ between mesh types
+			virtual void SetUpGeometry();
+			// Graphics setup - binding of VAO, VBO, IBO, etc. - are common to all mesh geometries
+			void SetUpGraphics();
+
 	};
 
 	class MeshMaterial
 	{
 		public:
 
-			MeshMaterial(const std::shared_ptr<std::vector<Uniform*>>& material_uniforms);
+			MeshMaterial(std::unique_ptr<std::vector<Uniform*>>& material_uniforms);
 			~MeshMaterial();
 
 			void Bind(Shader& shader);
 
+			std::unique_ptr<std::vector<Uniform*>> uniforms;
+
 		private:
 
-			std::shared_ptr<std::vector<Uniform*>> uniforms;
+			//std::unique_ptr<std::vector<Uniform*>> uniforms;
 
 	};
 
@@ -55,7 +58,7 @@ namespace Jotunn
 	{
 		public:
 
-			Mesh(MeshGeometry* geometry, MeshMaterial* material);
+			Mesh(std::shared_ptr<MeshGeometry> geometry, std::shared_ptr<MeshMaterial> material);
 			~Mesh();
 
 			int GetElementCount()
@@ -67,7 +70,7 @@ namespace Jotunn
 
 		private:
 
-			MeshGeometry* geometry;
-			MeshMaterial* material;
+			std::shared_ptr<MeshGeometry> geometry;
+			std::shared_ptr<MeshMaterial> material;
 	};
 }

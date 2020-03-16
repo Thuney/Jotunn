@@ -4,14 +4,20 @@
 namespace Jotunn
 {
 
-	MeshGeometry::MeshGeometry(const std::shared_ptr<VertexArray>& vao, const std::shared_ptr<VertexBuffer>& vbo, const BufferLayout& vbo_layout, const std::shared_ptr<IndexBuffer>& ibo)
+	MeshGeometry::MeshGeometry(std::unique_ptr<VertexArray>& vao, std::shared_ptr<VertexBuffer> vbo, const BufferLayout& vbo_layout, std::shared_ptr<IndexBuffer> ibo)
 	{
-		this->vao = vao;
+		this->vao.reset(nullptr);
+		this->vao.swap(vao);
 		this->vbo = vbo;
 		this->vbo_layout = vbo_layout;
 		this->ibo = ibo;
 
-		SetUpGeometry();
+		SetUpGraphics();
+	}
+
+	MeshGeometry::MeshGeometry()
+	{
+
 	}
 
 	MeshGeometry::~MeshGeometry()
@@ -24,11 +30,29 @@ namespace Jotunn
 		this->vao->Bind();
 	}
 
+	void MeshGeometry::SetUpGeometry()
+	{
+		this->vao.reset(VertexArray::Create());
+		this->vbo.reset(VertexBuffer::Create(nullptr, 0));
+
+		this->ibo = nullptr;
+	};
+	 
+	void MeshGeometry::SetUpGraphics()
+	{
+		this->vbo->SetLayout(this->vbo_layout);
+		this->vao->AddVertexBuffer(this->vbo);
+		this->vao->SetIndexBuffer(this->ibo);
+
+		JOTUNN_CORE_TRACE("Graphics Set Up");
+	}
+
 	//-------------------------------------------------------------------------
 
-	MeshMaterial::MeshMaterial(const std::shared_ptr<std::vector<Uniform*>>& material_uniforms)
+	MeshMaterial::MeshMaterial(std::unique_ptr<std::vector<Uniform*>>& material_uniforms)
 	{
-		this->uniforms = material_uniforms;
+		this->uniforms.reset(nullptr);
+		this->uniforms.swap(material_uniforms);
 	}
 
 	MeshMaterial::~MeshMaterial()
@@ -41,14 +65,15 @@ namespace Jotunn
 		{
 			for (Uniform* u : *(this->uniforms))
 			{
-				shader.UploadUniform(*u);
+				if(u != nullptr)
+					shader.UploadUniform(*u);
 			}
 		}
 	}
 
 	//-------------------------------------------------------------------------
 
-	Mesh::Mesh(MeshGeometry* geometry, MeshMaterial* material)
+	Mesh::Mesh(std::shared_ptr<MeshGeometry> geometry, std::shared_ptr<MeshMaterial> material)
 	{
 		this->geometry = geometry;
 		this->material = material;
@@ -56,8 +81,7 @@ namespace Jotunn
 
 	Mesh::~Mesh()
 	{
-		delete this->geometry;
-		delete this->material;
+
 	}
 
 	void Mesh::Bind(Shader& shader)

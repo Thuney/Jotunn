@@ -2,6 +2,8 @@
 
 #include "Platform/Graphics/OpenGLShader.h"
 
+#include "Core/Debugging/Logging/Log.h"
+
 namespace Jotunn
 {
 	Renderer::SceneData* Renderer::s_SceneData = new Renderer::SceneData;
@@ -20,7 +22,7 @@ namespace Jotunn
 	{
 	}
 
-	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<VertexArray>& vertexArray, const glm::mat4& transform)
+	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::unique_ptr<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
@@ -30,11 +32,13 @@ namespace Jotunn
 		RenderCommand::DrawIndexed(vertexArray);
 	}
 
-	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<Mesh>& mesh, const glm::mat4& transform)
+	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::unique_ptr<Mesh>& mesh, const glm::mat4& transform)
 	{
 		shader->Bind();
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
+
+		JOTUNN_CORE_TRACE("Cube Mesh Submission Successful, contains {0} elements", (mesh->GetElementCount()));
 
 		mesh->Bind(*shader);
 		RenderCommand::DrawIndexed(mesh);
