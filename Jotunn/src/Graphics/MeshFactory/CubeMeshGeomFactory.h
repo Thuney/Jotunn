@@ -55,23 +55,14 @@ namespace Jotunn
 				this->vao.reset(VertexArray::Create());
 				this->vbo.reset(VertexBuffer::Create(this->cube_vertices, 24 * sizeof(float)));
 
-				JOTUNN_CORE_TRACE("Cube Geometry Set Up");
-
 				Jotunn::BufferLayout layout =
 				{
 					{ Jotunn::ShaderDataType::Float3, "position" }
 				};
 
-				JOTUNN_CORE_TRACE("VBO Layout Stride : {0}", ((layout).GetStride()));
-
 				this->vbo_layout = layout;
 
-				JOTUNN_CORE_TRACE("VBO Layout Stride : {0}", ((this->vbo_layout).GetStride()) );
-
 				int elements = (sizeof(triangle_indices) / sizeof(uint32_t));
-
-				JOTUNN_CORE_TRACE("IBO Element Count: {0}", elements );
-
 				this->ibo.reset(IndexBuffer::Create(triangle_indices, elements));
 			};
 	};

@@ -3,6 +3,7 @@
 #include "glm/gtc/type_ptr.hpp"
 
 #include "Graphics/MeshFactory/CubeMeshGeomFactory.h"
+#include "Graphics/MeshFactory/SphereMeshGeomFactory.h"
 
 TestLayer::TestLayer() : Layer("Test Layer"), m_CameraController(1280.0f / 720.0f, 0.1f, 50.0f)
 {
@@ -28,7 +29,8 @@ void TestLayer::OnAttach()
 	cube_material = std::shared_ptr<Jotunn::MeshMaterial>(new Jotunn::MeshMaterial(material_uniforms));
 
 	Jotunn::CubeMeshGeomFactory cube_factory;
-	cube_geom = cube_factory.compute();
+	Jotunn::SphereMeshGeomFactory sphere_factory;
+	cube_geom = sphere_factory.compute();
 
 	m_BoxMesh.reset(new Jotunn::Mesh(cube_geom, cube_material));
 
