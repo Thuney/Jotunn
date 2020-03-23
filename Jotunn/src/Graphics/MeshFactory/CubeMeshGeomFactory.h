@@ -28,15 +28,15 @@ namespace Jotunn
 			// OpenGL's unprojected coordinate system
 			float cube_vertices[24] =
 			{
-				-0.5f, 0.0f, 0.5f,
-				 0.5f, 0.0f, 0.5f,
-				 0.5f, 1.0f, 0.5f,
-				-0.5f, 1.0f, 0.5f,
+				-0.5f, -0.5f, 0.5f,
+				 0.5f, -0.5f, 0.5f,
+				 0.5f, 0.5f, 0.5f,
+				-0.5f, 0.5f, 0.5f,
 
-				-0.5f, 0.0f, -0.5f,
-				 0.5f, 0.0f, -0.5f,
-				 0.5f, 1.0f, -0.5f,
-				-0.5f, 1.0f, -0.5f
+				-0.5f, -0.5f, -0.5f,
+				 0.5f, -0.5f, -0.5f,
+				 0.5f, 0.5f, -0.5f,
+				-0.5f, 0.5f, -0.5f
 			};
 
 			// Indices of the triangle vertices in the array of vertex data

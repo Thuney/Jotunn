@@ -38,8 +38,6 @@ namespace Jotunn
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
 
-		JOTUNN_CORE_TRACE("Cube Mesh Submission Successful, contains {0} elements", (mesh->GetElementCount()));
-
 		mesh->Bind(*shader);
 		RenderCommand::DrawIndexed(mesh);
 	}

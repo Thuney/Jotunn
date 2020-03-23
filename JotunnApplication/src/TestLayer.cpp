@@ -26,13 +26,15 @@ void TestLayer::OnAttach()
 	material_uniforms.reset(new std::vector<Jotunn::Uniform*>);
 	material_uniforms->push_back(new Jotunn::Float3Uniform("u_Color", color));
 
-	cube_material = std::shared_ptr<Jotunn::MeshMaterial>(new Jotunn::MeshMaterial(material_uniforms));
+	color_material = std::shared_ptr<Jotunn::MeshMaterial>(new Jotunn::MeshMaterial(material_uniforms));
 
 	Jotunn::CubeMeshGeomFactory cube_factory;
 	Jotunn::SphereMeshGeomFactory sphere_factory;
-	cube_geom = sphere_factory.compute();
+	sphere_geom = sphere_factory.compute();
+	cube_geom = cube_factory.compute();
 
-	m_BoxMesh.reset(new Jotunn::Mesh(cube_geom, cube_material));
+	m_BoxMesh.reset(new Jotunn::Mesh(cube_geom, color_material));
+	m_SphereMesh.reset(new Jotunn::Mesh(sphere_geom, color_material));
 
 }
 
@@ -51,6 +53,7 @@ void TestLayer::OnUpdate(Jotunn::Timestep ts)
 	Jotunn::Renderer::BeginScene(m_CameraController.GetCamera());
 
 	Jotunn::Renderer::Submit(m_Shader, m_BoxMesh, glm::mat4(1.0f));
+	Jotunn::Renderer::Submit(m_Shader, m_SphereMesh, glm::mat4(1.0f));
 
 	Jotunn::Renderer::EndScene();
 }

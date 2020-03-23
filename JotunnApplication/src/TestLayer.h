@@ -23,9 +23,11 @@ class TestLayer : public Jotunn::Layer
 
 		std::shared_ptr<Jotunn::Shader> m_Shader = nullptr;
 
-		std::shared_ptr<Jotunn::MeshMaterial> cube_material = nullptr;
+		std::shared_ptr<Jotunn::MeshMaterial> color_material = nullptr;
 		std::shared_ptr<Jotunn::MeshGeometry> cube_geom = nullptr;
+		std::shared_ptr<Jotunn::MeshGeometry> sphere_geom = nullptr;
 		std::unique_ptr<Jotunn::Mesh> m_BoxMesh  = nullptr;
+		std::unique_ptr<Jotunn::Mesh> m_SphereMesh = nullptr;
 		//std::shared_ptr<Jotunn::VertexArray> m_VertexArray = nullptr;
 
 		//Hardcoded array of our triangle vertices in (X, Y) pairs

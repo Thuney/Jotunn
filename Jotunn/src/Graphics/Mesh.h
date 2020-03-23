@@ -46,11 +46,9 @@ namespace Jotunn
 
 			void Bind(Shader& shader);
 
-			std::unique_ptr<std::vector<Uniform*>> uniforms;
-
 		private:
 
-			//std::unique_ptr<std::vector<Uniform*>> uniforms;
+			std::unique_ptr<std::vector<Uniform*>> uniforms;
 
 	};
 
