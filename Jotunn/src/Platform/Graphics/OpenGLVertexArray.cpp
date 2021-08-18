@@ -1,5 +1,5 @@
 #include "Core/CoreInclude.h"
-#include "OpenGLVertexArray.h"
+#include "Platform/Graphics/OpenGLVertexArray.h"
 #include "GL/glew.h"
 
 namespace Jotunn

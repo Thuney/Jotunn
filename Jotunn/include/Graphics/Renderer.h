@@ -1,7 +1,7 @@
 #pragma once
 
-#include "PerspectiveCamera.h"
-#include "RenderCommand.h"
+#include "Graphics/PerspectiveCamera.h"
+#include "Graphics/RenderCommand.h"
 #include "Graphics/Shader.h"
 #include "Graphics/Mesh.h"
 

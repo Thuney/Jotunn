@@ -1,5 +1,5 @@
 #include "Core/CoreInclude.h"
-#include "VertexArray.h"
+#include "Graphics/VertexArray.h"
 
 #include "Platform/Graphics/OpenGLVertexArray.h"
 

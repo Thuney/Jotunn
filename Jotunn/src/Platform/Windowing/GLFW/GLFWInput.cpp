@@ -1,4 +1,4 @@
-#include "GLFWInput.h"
+#include "Platform/Windowing/GLFW/GLFWInput.h"
 
 #include "Core/Engine/Application.h"
 #include <GLFW/glfw3.h>

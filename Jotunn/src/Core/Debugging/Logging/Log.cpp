@@ -1,4 +1,4 @@
-#include "Log.h"
+#include "Core/Debugging/Logging/Log.h"
 
 #include "spdlog/sinks/stdout_sinks.h"
 

@@ -1,4 +1,4 @@
-#include "OpenGLRenderingContext.h"
+#include "Platform/Graphics/OpenGLRenderingContext.h"
 
 #include "Core/CoreInclude.h"
 

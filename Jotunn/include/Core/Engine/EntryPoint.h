@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Application.h"
+
 /**
  * Function defined in the client which creates the application
  */
@@ -10,12 +12,4 @@ extern Jotunn::Application* Jotunn::CreateApplication();
  * 
  * Creates and runs the Jotunn application
  */
-int main(int argc, char** argv)
-{
-	Jotunn::Log::Init();
-	JOTUNN_CORE_WARN("Initialized Log!");
-
-	auto app = Jotunn::CreateApplication();
-	app->Run();
-	delete app;
-}
+int main(int argc, char** argv);

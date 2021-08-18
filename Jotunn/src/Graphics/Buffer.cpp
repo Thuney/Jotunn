@@ -1,5 +1,5 @@
 #include "Core/CoreInclude.h"
-#include "Buffer.h"
+#include "Graphics/Buffer.h"
 
 #include "Platform/Graphics/OpenGLBuffer.h"
 

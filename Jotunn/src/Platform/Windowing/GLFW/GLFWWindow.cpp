@@ -1,4 +1,4 @@
-#include "GLFWWindow.h"
+#include "Platform/Windowing/GLFW/GLFWWindow.h"
 
 #include "Core/Event/ApplicationEvent.h"
 #include "Core/Event/KeyEvent.h"

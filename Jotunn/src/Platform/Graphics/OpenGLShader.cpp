@@ -1,5 +1,5 @@
 #include "Core/CoreInclude.h"
-#include "OpenGLShader.h"
+#include "Platform/Graphics/OpenGLShader.h"
 
 #include <glm/gtc/type_ptr.hpp>
 

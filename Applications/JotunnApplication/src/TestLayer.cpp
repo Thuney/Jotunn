@@ -20,7 +20,7 @@ void TestLayer::OnAttach()
 
 	color = glm::vec3(0.0f, 1.0f, 0.0f);
 
-	m_Shader = Jotunn::Shader::Create("SingleColor", "../res/vertex_shader.vert", "../res/fragment_shader.frag");
+	m_Shader = Jotunn::Shader::Create("SingleColor", "../../res/vertex_shader.vert", "../../res/fragment_shader.frag");
 
 	std::unique_ptr<std::vector<Jotunn::Uniform*>> material_uniforms;
 	material_uniforms.reset(new std::vector<Jotunn::Uniform*>);

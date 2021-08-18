@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Window.h"
 #include "Core/Event/Event.h"
 #include "Core/Event/ApplicationEvent.h"
 #include "Core/Event/MouseEvent.h"
 
-#include "LayerStack.h"
-#include "ImGuiLayer.h"
+#include "Core/Engine/Window.h"
+#include "Core/Engine/LayerStack.h"
+#include "Core/Engine/ImGuiLayer.h"
 
 namespace Jotunn
 {

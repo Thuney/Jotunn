@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "Mesh.h"
+#include "Graphics/Mesh.h"
 
 namespace Jotunn
 {

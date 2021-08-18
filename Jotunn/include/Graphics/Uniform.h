@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ShaderDataType.h"
+#include "Graphics/ShaderDataType.h"
 #include "glm/glm.hpp"
 
 #include <string>

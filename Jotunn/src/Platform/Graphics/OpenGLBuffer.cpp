@@ -1,5 +1,5 @@
 #include "Core/CoreInclude.h"
-#include "OpenGLBuffer.h"
+#include "Platform/Graphics/OpenGLBuffer.h"
 #include "GL/glew.h"
 
 namespace Jotunn
