@@ -3,7 +3,7 @@
 
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Core/Util/FileParse.h"
+#include "Util/FileParse.h"
 
 namespace Jotunn
 {

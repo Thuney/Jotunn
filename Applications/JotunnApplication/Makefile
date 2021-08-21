@@ -1,20 +1,21 @@
 CXX      := -g++
 CXXFLAGS := -pedantic-errors -Wall -Wextra
 
-RPATH_LINKAGE := -Wl,-rpath,$(CURDIR)/../../Jotunn/vendor/ASSIMP/lib,-rpath,$(CURDIR)/../../Jotunn/build/lib/
+RPATH_LINKAGE := -Wl,-rpath,$(CURDIR)/../../Jotunn/vendor/ASSIMP/lib,-rpath,$(CURDIR)/../../Jotunn/JotunnLib/build/lib/,-rpath,$(CURDIR)/../../Jotunn/Engine/build/lib/
 
-LDFLAGS  := -L/usr/lib -lstdc++ -lm -lpthread -L$(CURDIR)/../../Jotunn/build/lib/ -ljotunn $(RPATH_LINKAGE)
+LDFLAGS  := -L/usr/lib -lstdc++ -lm -lpthread -L$(CURDIR)/../../Jotunn/Engine/build/lib/ -ljotunn $(RPATH_LINKAGE)
 
 BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
 APP_DIR  := $(BUILD)/apps
 TARGET   := JotunnApplication
-INCLUDE  := 					 		  \
-	-I./include/ 				 		  \
-	-I../../Jotunn/include/ 	  		  \
-	-I../../Jotunn/vendor/GLM/    	      \
-	-I../../Jotunn/vendor/IMGUI/  		  \
-	-I../../Jotunn/vendor/SPDLOG/include/ \
+INCLUDE  := 					 		            \
+	-I./include/ 				 		            \
+	-I$(CURDIR)/../../Jotunn/Engine/include/ 	    \
+	-I$(CURDIR)/../../Jotunn/JotunnLib/include/ 	\
+	-I$(CURDIR)/../../Jotunn/vendor/GLM/    	    \
+	-I$(CURDIR)/../../Jotunn/vendor/IMGUI/  		\
+	-I$(CURDIR)/../../Jotunn/vendor/SPDLOG/include/ \
 
 
 HDRS     :=                           \

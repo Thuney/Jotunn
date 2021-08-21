@@ -1,6 +1,6 @@
 #include "Graphics/PerspectiveCamera.h"
 
-#include "Core/Debugging/Logging/Log.h"
+#include "Debugging/Logging/Log.h"
 
 namespace Jotunn
 {
