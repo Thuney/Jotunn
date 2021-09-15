@@ -5,12 +5,11 @@ CXXFLAGS := -pedantic-errors -Wall -Wextra -std=c++17 -fPIC -shared
 
 # Vendor linkages
 LDVENDORFLAGS :=                                   \
-	-L$(CURDIR)/../vendor/ASSIMP/lib -lassimp      \
 	-L$(CURDIR)/../vendor/IMGUI/ 			       \
 	-L$(CURDIR)/../JotunnLib/build/lib -ljotunnlib \
 
 # Linking flags
-LDFLAGS  := -L/usr/lib -lstdc++ -lm -lpthread -lGL -lglfw -lGLEW $(LDVENDORFLAGS)
+LDFLAGS  := -L/usr/lib -lstdc++ -lm -lpthread -lGL -lglfw -lGLEW -lassimp -lfmt $(LDVENDORFLAGS)
 
 BUILD    	:= ./build
 OBJ_DIR  	:= $(BUILD)/objects
@@ -19,14 +18,9 @@ TARGET_LIB  := libjotunn.so
 
 # Includes
 INCLUDE  	:= 			                  \
-	-I./include/                  \
+	-I./include/                  		  \
 	-I$(CURDIR)/../JotunnLib/include/     \
-	-I$(CURDIR)/../vendor/ASSIMP/include/ \
-	-I$(CURDIR)/../vendor/GLEW/include/   \
-	-I$(CURDIR)/../vendor/GLFW/include/   \
-	-I$(CURDIR)/../vendor/GLM/            \
 	-I$(CURDIR)/../vendor/IMGUI/          \
-	-I$(CURDIR)/../vendor/SPDLOG/include/ \
 
 # Headers
 HDRS     :=                          	              \

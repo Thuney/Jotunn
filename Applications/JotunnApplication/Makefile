@@ -1,9 +1,9 @@
 CXX      := -g++
 CXXFLAGS := -pedantic-errors -Wall -Wextra
 
-RPATH_LINKAGE := -Wl,-rpath,$(CURDIR)/../../Jotunn/vendor/ASSIMP/lib,-rpath,$(CURDIR)/../../Jotunn/JotunnLib/build/lib/,-rpath,$(CURDIR)/../../Jotunn/Engine/build/lib/
+RPATH_LINKAGE := -Wl,-rpath,$(CURDIR)/../../Jotunn/JotunnLib/build/lib/,-rpath,$(CURDIR)/../../Jotunn/Engine/build/lib/
 
-LDFLAGS  := -L/usr/lib -lstdc++ -lm -lpthread -L$(CURDIR)/../../Jotunn/Engine/build/lib/ -ljotunn $(RPATH_LINKAGE)
+LDFLAGS  := -L/usr/lib -lstdc++ -lm -lpthread -lfmt -L$(CURDIR)/../../Jotunn/Engine/build/lib/ -ljotunn $(RPATH_LINKAGE)
 
 BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
@@ -13,10 +13,7 @@ INCLUDE  := 					 		            \
 	-I./include/ 				 		            \
 	-I$(CURDIR)/../../Jotunn/Engine/include/ 	    \
 	-I$(CURDIR)/../../Jotunn/JotunnLib/include/ 	\
-	-I$(CURDIR)/../../Jotunn/vendor/GLM/    	    \
 	-I$(CURDIR)/../../Jotunn/vendor/IMGUI/  		\
-	-I$(CURDIR)/../../Jotunn/vendor/SPDLOG/include/ \
-
 
 HDRS     :=                           \
 			$(wildcard include/*.h)   \

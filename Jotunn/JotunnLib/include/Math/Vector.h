@@ -9,8 +9,8 @@ namespace Jotunn
 	{
 		public:
 
-			float x;
-			float y;
+			float x = 0.0f;
+			float y = 0.0f;
 			
 			Vector2D() { };
 			Vector2D(float x, float y)
@@ -33,9 +33,9 @@ namespace Jotunn
 	{
 		public:
 
-			float x;
-			float y;
-			float z;
+			float x = 0.0f;
+			float y = 0.0f;
+			float z = 0.0f;
 
 			Vector3D() { };
 			Vector3D(float x, float y, float z)

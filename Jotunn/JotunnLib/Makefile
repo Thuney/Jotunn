@@ -4,7 +4,7 @@ CXX      := -g++
 CXXFLAGS := -pedantic-errors -Wall -Wextra -std=c++17 -fPIC -shared
 
 # Linking flags
-LDFLAGS  := -L/usr/lib -lstdc++ -lm -lpthread
+LDFLAGS  := -L/usr/lib -lstdc++ -lm -lpthread -lfmt
 
 BUILD    	:= ./build
 OBJ_DIR  	:= $(BUILD)/objects
@@ -14,7 +14,6 @@ TARGET_LIB  := libjotunnlib.so
 # Includes
 INCLUDE  	:= 			        \
 	-I./include/                \
-	-I../vendor/SPDLOG/include/ \
 
 # Headers
 HDRS     :=                          	         \

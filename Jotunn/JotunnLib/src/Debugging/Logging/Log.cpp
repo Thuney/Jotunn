@@ -1,6 +1,6 @@
 #include "Debugging/Logging/Log.h"
 
-#include "spdlog/sinks/stdout_sinks.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace Jotunn
 {
@@ -13,6 +13,7 @@ namespace Jotunn
 	{
 		//Format is "[Time] 'LoggerName': 'txt'"
 		spdlog::set_pattern("%^[%T] %n: %v%$");
+
 		s_CoreLogger = spdlog::stdout_color_mt("JOTUNN");
 		s_CoreLogger->set_level(spdlog::level::trace);
 

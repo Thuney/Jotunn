@@ -1,9 +1,12 @@
+#define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE VectorTests
 #include <boost/test/unit_test.hpp>
 
 #include "Math/Vector.h"
 
-BOOST_AUTO_TEST_CASE(ConstructorTests, *boost::unit_test::tolerance(0.00001))
+using namespace Jotunn;
+
+BOOST_AUTO_TEST_CASE(ConstructorTests, *boost::unit_test::tolerance(0.0001))
 {
     Vector2D a;
     Vector3D b;
@@ -25,7 +28,7 @@ BOOST_AUTO_TEST_CASE(ConstructorTests, *boost::unit_test::tolerance(0.00001))
     BOOST_TEST( b.z == 0.4287f );
 }
 
-BOOST_AUTO_TEST_CASE(AdditionTests, *boost::unit_test::tolerance(0.00001))
+BOOST_AUTO_TEST_CASE(AdditionTests, *boost::unit_test::tolerance(0.0001))
 {
 
     Vector2D a;
