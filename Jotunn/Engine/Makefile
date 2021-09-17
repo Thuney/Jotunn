@@ -5,7 +5,6 @@ CXXFLAGS := -pedantic-errors -Wall -Wextra -std=c++17 -fPIC -shared
 
 # Vendor linkages
 LDVENDORFLAGS :=                                   \
-	-L$(CURDIR)/../vendor/IMGUI/ 			       \
 	-L$(CURDIR)/../JotunnLib/build/lib -ljotunnlib \
 
 # Linking flags
@@ -20,7 +19,6 @@ TARGET_LIB  := libjotunn.so
 INCLUDE  	:= 			                  \
 	-I./include/                  		  \
 	-I$(CURDIR)/../JotunnLib/include/     \
-	-I$(CURDIR)/../vendor/IMGUI/          \
 
 # Headers
 HDRS     :=                          	              \
@@ -28,6 +26,7 @@ HDRS     :=                          	              \
 	$(wildcard include/Core/Event/*.h)                \
 	$(wildcard include/Core/*.h)                      \
 													  \
+	$(wildcard include/Graphics/IMGUI/*.h)      	  \
 	$(wildcard include/Graphics/API/*.h)      		  \
 	$(wildcard include/Graphics/Camera/*.h)      	  \
 	$(wildcard include/Graphics/MeshFactory/*.h)      \
@@ -43,6 +42,7 @@ SRC      :=                           			      \
 	$(wildcard src/Core/Event/*.cpp)                  \
 	$(wildcard src/Core/*.cpp)                        \
                                                       \
+	$(wildcard src/Graphics/IMGUI/*.cpp)        	  \
 	$(wildcard src/Graphics/API/*.cpp)        		  \
 	$(wildcard src/Graphics/Camera/*.cpp)             \
 	$(wildcard src/Graphics/MeshFactory/*.cpp)        \
@@ -52,9 +52,6 @@ SRC      :=                           			      \
 	$(wildcard src/Platform/Graphics/*.cpp)           \
 	$(wildcard src/Platform/Windowing/GLFW/*.cpp)     \
                                                       \
-	$(wildcard $(CURDIR)/../vendor/IMGUI/*.cpp)                    \
-	$(CURDIR)/../vendor/IMGUI/examples/imgui_impl_glfw.cpp         \
-	$(CURDIR)/../vendor/IMGUI/examples/imgui_impl_opengl3.cpp      \
 
 # Derive names of object files from our source files
 OBJECTS := $(SRC:%.cpp=$(OBJ_DIR)/%.o)

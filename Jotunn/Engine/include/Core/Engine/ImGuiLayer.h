@@ -6,7 +6,7 @@
 #include "Core/Event/KeyEvent.h"
 #include "Core/Event/MouseEvent.h"
 
-#include "imgui.h"
+#include "Graphics/IMGUI/imgui.h"
 
 namespace Jotunn
 {
