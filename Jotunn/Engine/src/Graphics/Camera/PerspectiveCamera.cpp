@@ -1,4 +1,4 @@
-#include "Graphics/PerspectiveCamera.h"
+#include "Graphics/Camera/PerspectiveCamera.h"
 
 #include "Debugging/Logging/Log.h"
 

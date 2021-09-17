@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/CoreInclude.h"
-#include "Graphics/Buffer.h"
+#include "Graphics/API/Buffer.h"
 
 namespace Jotunn
 {

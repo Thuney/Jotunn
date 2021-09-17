@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Graphics/Uniform.h"
+#include "Graphics/API/Uniform.h"
 
 namespace Jotunn
 {

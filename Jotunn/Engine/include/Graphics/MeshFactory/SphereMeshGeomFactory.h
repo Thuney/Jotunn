@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Graphics/Mesh.h"
+#include "Graphics/API/Mesh.h"
 #include "Graphics/MeshFactory/MeshGeomFactory.h"
 
 #include <cmath>

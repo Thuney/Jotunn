@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Graphics/ShaderDataType.h"
+#include "Graphics/API/ShaderDataType.h"
 
 namespace Jotunn
 {

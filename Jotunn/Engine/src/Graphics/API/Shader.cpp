@@ -1,6 +1,6 @@
 #include "Core/CoreInclude.h"
 
-#include "Graphics/Shader.h"
+#include "Graphics/API/Shader.h"
 #include "Platform/Graphics/OpenGLShader.h"
 
 namespace Jotunn

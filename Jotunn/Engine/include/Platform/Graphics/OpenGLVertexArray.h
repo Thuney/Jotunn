@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Graphics/VertexArray.h"
+#include "Graphics/API/VertexArray.h"
 
 namespace Jotunn
 {

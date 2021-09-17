@@ -1,11 +1,11 @@
-#include "Graphics/Buffer.h"
+#include "Graphics/API/Buffer.h"
 
-#include "Graphics/VertexArray.h"
+#include "Graphics/API/VertexArray.h"
 
-#include "Graphics/Shader.h"
+#include "Graphics/API/Shader.h"
 
-#include "Graphics/Mesh.h"
+#include "Graphics/API/Mesh.h"
 
-#include "Graphics/PerspectiveCameraController.h"
+#include "Graphics/Camera/PerspectiveCameraController.h"
 
-#include "Graphics/Renderer.h"
+#include "Graphics/Render/Renderer.h"

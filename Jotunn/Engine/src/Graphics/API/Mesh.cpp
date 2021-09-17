@@ -1,5 +1,5 @@
-#include "Graphics/Mesh.h"
-#include "Graphics/Shader.h"
+#include "Graphics/API/Mesh.h"
+#include "Graphics/API/Shader.h"
 
 namespace Jotunn
 {

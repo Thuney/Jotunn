@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Graphics/VertexArray.h"
-#include "Graphics/Buffer.h"
-#include "Graphics/Uniform.h"
+#include "Graphics/API/VertexArray.h"
+#include "Graphics/API/Buffer.h"
+#include "Graphics/API/Uniform.h"
 
 namespace Jotunn
 {

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Graphics/PerspectiveCamera.h"
-#include "Graphics/RenderCommand.h"
-#include "Graphics/Shader.h"
-#include "Graphics/Mesh.h"
+#include "Graphics/Camera/PerspectiveCamera.h"
+#include "Graphics/Render/RenderCommand.h"
+#include "Graphics/API/Shader.h"
+#include "Graphics/API/Mesh.h"
 
 namespace Jotunn
 {

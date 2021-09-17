@@ -28,7 +28,10 @@ HDRS     :=                          	              \
 	$(wildcard include/Core/Event/*.h)                \
 	$(wildcard include/Core/*.h)                      \
 													  \
+	$(wildcard include/Graphics/API/*.h)      		  \
+	$(wildcard include/Graphics/Camera/*.h)      	  \
 	$(wildcard include/Graphics/MeshFactory/*.h)      \
+	$(wildcard include/Graphics/Render/*.h)      	  \
 	$(wildcard include/Graphics/*.h)                  \
                                                       \
 	$(wildcard include/Platform/Graphics/*.h)         \
@@ -40,7 +43,10 @@ SRC      :=                           			      \
 	$(wildcard src/Core/Event/*.cpp)                  \
 	$(wildcard src/Core/*.cpp)                        \
                                                       \
+	$(wildcard src/Graphics/API/*.cpp)        		  \
+	$(wildcard src/Graphics/Camera/*.cpp)             \
 	$(wildcard src/Graphics/MeshFactory/*.cpp)        \
+	$(wildcard src/Graphics/Render/*.cpp)        	  \
 	$(wildcard src/Graphics/*.cpp)                    \
                                                       \
 	$(wildcard src/Platform/Graphics/*.cpp)           \
